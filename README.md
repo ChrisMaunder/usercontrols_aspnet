@@ -36,7 +36,7 @@ embedded in a page using the following simple syntax:
 
 This produces the following output: 
 
-![Sample Image - MyUserControl.gif](https://raw.githubusercontent.com/ChrisMaunder/myusercontrol/master/docs/assets/myusercontrol.gif)
+![Sample Image - MyUserControl.gif](https://raw.githubusercontent.com/ChrisMaunder/usercontrols_aspnet/master/docs/assets/myusercontrol.gif)
 
 ## So how do we write a user control?
 
@@ -53,7 +53,7 @@ controls so that we get simple access to their attributes at runtime.
 
 The entire .ascx file looks like:
 
-```cpp
+```ASP.NET
 <%@ Control Language="c#" AutoEventWireup="false" 
     Codebehind="MyUserControl.ascx.cs" 
     Inherits="CodeProject.MyUserControl" 
@@ -99,7 +99,7 @@ and display can do.
 
 Our C# code looks like the following:
 
-```cpp
+```csharp
 namespace CodeProject
 {
     using System;
@@ -164,7 +164,7 @@ will only provide the mediocrity of colour and border width changes.
 
 Note the block of variable declarations at the top:
 
-```cpp
+```csharp
         public string Title       = null;
         public string TextColor   = Color.Black.Name;
         public string BackColor   = Color.Wheat.Name;
@@ -177,7 +177,7 @@ These publicly accessible variables form the attributes that are
 available to the user when he or she instantiates the control in a
 web page:
 
-```cpp
+```aspnet
 <CP:TitleBar Title="User Control Test" TextColor="green" Padding=10 runat=server />
 ```
 
@@ -188,7 +188,7 @@ The user can set all, some or none of these properties.
    The other half of the story is the link between the ASP .NET controls
 and the C# code. Note the block of variables underneath these:
 
-```cpp
+```csharp
         protected Table OuterTable;
         protected Table InnerTable;
         protected Label TitleLabel;
@@ -199,7 +199,7 @@ in our .ascx page. This causes the variable in our C# class to be linked up to t
 ASP .NET control in the .ascx page. We can now manipulate the controls on the
 page however we like:
 
-```cpp
+```csharp
             if (Title==null || Title=="") 
                 Visible = false;
             else
@@ -237,7 +237,7 @@ To use the control you must make a page aware of the control. We do this
 by using a Register directive that specified the tag prefix we'll use, the
 tag name and the location of the user control's page:
 
-```cpp
+```ASP.NET
 <%@ Register TagPrefix="CP" TagName="TitleBar" Src="MyUserControl.ascx" %>
          
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" > 
